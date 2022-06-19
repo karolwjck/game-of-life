@@ -32,13 +32,15 @@ def replace_cell_state_symbol():
 
 
 def next_board_state(initial_state):
-    initial_state
+    new_board_state = dead_state()
 
+    for x in range(0, WIDTH):
+        for y in range(0, HEIGHT):
+            new_board_state[x][y] = cell_status_update((x,y), initial_state)
     return next_board_state
 
 
 def cell_status_update(cell_coords, board_state):
-    new_board_state = dead_state()
     x = cell_coords[0]
     y = cell_coords[1]
     n_alive_neighbours = 0
