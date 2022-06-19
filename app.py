@@ -21,8 +21,14 @@ def replace_cell_state_symbol():
             if board[i][j] == 0:
                 board[i][j] = " "
             else:
-                board[i][j] = "*"
+                board[i][j] = u"\u2588"
     return board
+
+
+def next_board_state(initial_state):
+    initial_state
+
+    return next_board_state
 
 
 def render_board_state():
@@ -39,3 +45,7 @@ def render_board_state():
         board_str = " ".join(board[i])
         print("| " + board_str + " | \n")
     print(btm_row_str)
+
+
+if __name__ == "__main__":
+    render_board_state()    
