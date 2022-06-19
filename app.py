@@ -33,18 +33,9 @@ def next_board_state(initial_state):
 
 def render_board_state():
     board = replace_cell_state_symbol()
-    top_row = []
-    btm_row = []
-    for i in range(WIDTH):
-        top_row.append(" -")
-        btm_row.append(" -")
-    btm_row_str = "".join(btm_row)
-    top_row_str = "".join(top_row)
-    print(top_row_str)
     for i in range(len(board)):
         board_str = " ".join(board[i])
-        print("| " + board_str + " | \n")
-    print(btm_row_str)
+        print(board_str + "\n")
 
 
 if __name__ == "__main__":
