@@ -1,7 +1,7 @@
 from random import randint
 
-WIDTH = 5
-HEIGHT = 5
+WIDTH = 20
+HEIGHT = 10
 
 
 def rand_num():
@@ -10,7 +10,7 @@ def rand_num():
 
 
 def random_state():
-   board = [[rand_num() for i in range(HEIGHT)] for j in range(WIDTH)]
+   board = [[rand_num() for i in range(WIDTH)] for j in range(HEIGHT)]
    return board
 
 
