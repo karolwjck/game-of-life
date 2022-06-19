@@ -12,23 +12,12 @@ def rand_num():
 
 
 def dead_state():
-    dead_board = [[DEAD for _ in range(WIDTH)] for _ in range(HEIGHT)]
+    dead_board = [[DEAD for _ in range(HEIGHT)] for _ in range(WIDTH)]
     return dead_board
 
 def random_state():
-   board = [[rand_num() for _ in range(WIDTH)] for _ in range(HEIGHT)]
+   board = [[rand_num() for _ in range(HEIGHT)] for _ in range(WIDTH)]
    return board
-
-
-def replace_cell_state_symbol():
-    board = random_state()
-    for i in range(len(board)):
-        for j in range(len(board[i])):
-            if board[i][j] == 0:
-                board[i][j] = " "
-            else:
-                board[i][j] = u"\u2588"
-    return board
 
 
 def next_board_state(initial_state):
@@ -37,7 +26,8 @@ def next_board_state(initial_state):
     for x in range(0, WIDTH):
         for y in range(0, HEIGHT):
             new_board_state[x][y] = cell_status_update((x,y), initial_state)
-    return next_board_state
+
+    return new_board_state
 
 
 def cell_status_update(cell_coords, board_state):
@@ -48,7 +38,7 @@ def cell_status_update(cell_coords, board_state):
     # Iterate around the current cells neighbours
     for x1 in range((x-1), (x+1)+1):
         # Check to see if you're not off the WIDTH edge of the board
-        if x<1 < 0 or x1 >= WIDTH: continue
+        if x1 < 1 < 0 or x1 >= WIDTH: continue
 
         for y1 in range((y-1), (y+1)+1):
             # Check to see if you're not off the HEIGHT edge of the board
@@ -56,7 +46,7 @@ def cell_status_update(cell_coords, board_state):
             # Don't count the current cell as a neighbour
             if x1 == x and y1 == y: continue
 
-            if board_state[x][y]:
+            if board_state[x1][y1]:
                 n_alive_neighbours += 1
 
             if board_state[x][y] == ALIVE:
@@ -74,12 +64,19 @@ def cell_status_update(cell_coords, board_state):
                     return DEAD
 
 
-def render_board_state():
-    board = replace_cell_state_symbol()
-    for i in range(len(board)):
-        board_str = " ".join(board[i])
-        print(board_str + "\n")
+def render_board_state(board_state):
+    # u"\u2588" unicode for a filled-in square
+    display_as = {DEAD: " ", ALIVE: u"\u2588"}
+
+    display_lines = []
+    for y in range(0, HEIGHT):
+        display_line = ""
+        for x in range(0, WIDTH):
+            display_line += display_as[board_state[x][y]] * 2
+        display_lines.append(display_line)
+        print("\n".join(display_lines))
 
 
 if __name__ == "__main__":
-    render_board_state()    
+    initial_state = random_state()
+    render_board_state(initial_state)
