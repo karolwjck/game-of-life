@@ -1,10 +1,20 @@
 from random import randint
+import time
 
 WIDTH = 20
 HEIGHT = 10
 
 ALIVE = 1
 DEAD = 0
+
+
+# TODO Add Unit Testing
+# TODO Add Documentation
+# TODO Add GENERATION variable to loop for a given number of generations
+# TODO Add ability to load an initial state from a file
+# TODO Add Ability to update Game of Life rules
+# TODO Implement a terminal UI (curses for Linux)
+
 
 def rand_num():
     cell_state = randint(0, 1)
@@ -77,6 +87,14 @@ def render_board_state(board_state):
         print("\n".join(display_lines))
 
 
+def game_loop(initial_state):
+    next_board_state = initial_state
+
+    while True:
+        render_board_state(next_board_state)
+        time.sleep(0.03)
+
+
 if __name__ == "__main__":
     initial_state = random_state()
-    render_board_state(initial_state)
+    game_loop(initial_state)
