@@ -5,12 +5,12 @@ ALIVE = 1
 DEAD = 0
 
 
-# TODO Add Unit Testing
-# TODO Add Documentation
-# TODO Add GENERATION variable to loop for a given number of generations
-# TODO Add ability to load an initial state from a file
-# TODO Add Ability to update Game of Life rules
-# TODO Implement a terminal UI (curses for Linux)
+# TODO: Add Unit Testing
+# TODO: Add Documentation
+# TODO: Add GENERATION variable to loop for a given number of generations
+# TODO: Add ability to load an initial state from a file
+# TODO: Add Ability to update Game of Life rules
+# TODO: Implement a terminal UI (curses for Linux)
 
 
 def rand_num():
