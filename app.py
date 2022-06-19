@@ -3,14 +3,20 @@ from random import randint
 WIDTH = 20
 HEIGHT = 10
 
+ALIVE = 1
+DEAD = 0
 
 def rand_num():
     cell_state = randint(0, 1)
     return cell_state
 
 
+def dead_state():
+    dead_board = [[DEAD for _ in range(WIDTH)] for _ in range(HEIGHT)]
+    return dead_board
+
 def random_state():
-   board = [[rand_num() for i in range(WIDTH)] for j in range(HEIGHT)]
+   board = [[rand_num() for _ in range(WIDTH)] for _ in range(HEIGHT)]
    return board
 
 
@@ -29,6 +35,10 @@ def next_board_state(initial_state):
     initial_state
 
     return next_board_state
+
+
+# def cell_status_update():
+
 
 
 def render_board_state():
